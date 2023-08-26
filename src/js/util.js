@@ -737,7 +737,12 @@
 
                     newNode = ownerDocument.createElement('p');
                     node.parentNode.replaceChild(newNode, node);
-                    newNode.appendChild(node);
+
+                    if (node.nodeName.toLowerCase() === 'span') {
+                        newNode.appendChild(node.firstChild);
+                    } else {
+                        newNode.appendChild(node);
+                    }
 
                     node = nextNode;
                 }
